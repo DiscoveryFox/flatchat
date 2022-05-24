@@ -2,3 +2,5 @@ venv/
 .idea/
 tests/
 testdb.db
+__pycache__/
+database/__pycache__/
