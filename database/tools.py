@@ -2,17 +2,17 @@ import json
 import sqlite3
 import secrets
 import time
-from pprint import pprint
 
 
 class Database:
     def __init__(self, db_path):
-        self.connection = sqlite3.connect(db_path)
+        self.connection = sqlite3.connect(db_path, check_same_thread=False)
         self.cursor = self.connection.cursor()
 
-    def get_password(self, id):
+    def get_password(self, id: int):
         self.cursor.execute("SELECT password FROM users WHERE id = ?", (id,))
         password = self.cursor.fetchone()[0]
+        print(password)
         return password
 
     def add_user(self, username, email, password):
